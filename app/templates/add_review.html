@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить отзыв</title>
+    <!-- Подключение файла стилей -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Добавить отзыв</h1>
+        <!-- Форма для добавления нового отзыва -->
+        <form method="POST">
+            <!-- Скрытые поля формы для защиты от CSRF-атак -->
+            {{ form.hidden_tag() }}
+            <!-- Поле для ввода рейтинга -->
+            <p>{{ form.rating.label }} {{ form.rating() }}</p>
+            <!-- Поле для ввода комментария -->
+            <p>{{ form.comment.label }} {{ form.comment() }}</p>
+            <!-- Кнопка для отправки формы -->
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+</body>
+</html>

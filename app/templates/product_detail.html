@@ -1,0 +1,25 @@
+<!-- templates/product_detail.html -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали товара</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.description }}</p>
+        <p>{{ product.price }}</p>
+        <img src="{{ product.image }}" alt="{{ product.name }}">
+        <h2>Отзывы</h2>
+        <ul>
+            {% for review in reviews %}
+                <li>{{ review.user.username }}: {{ review.rating }} - {{ review.comment }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('add_review', product_id=product.id) }}">Добавить отзыв</a>
+    </div>
+</body>
+</html>

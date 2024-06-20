@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Заголовок страницы -->
+    <title>Оформление заказа</title>
+    <!-- Подключение пользовательских стилей -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Основной контейнер страницы -->
+    <div class="container">
+        <!-- Заголовок страницы -->
+        <h1>Оформление заказа</h1>
+        <!-- Список товаров в корзине с их количеством и стоимостью -->
+        <ul>
+            <!-- Цикл для отображения каждого товара в корзине -->
+            {% for item in cart_items %}
+                <li>
+                    <!-- Название товара, его количество и стоимость за штуку и общая стоимость за все штуки -->
+                    {{ item.product.name }} - {{ item.quantity }} x {{ item.product.price }} = {{ item.quantity * item.product.price }}
+                </li>
+            {% endfor %}
+        </ul>
+        <!-- Форма для отправки данных для оформления заказа -->
+        <form method="POST">
+            <!-- Кнопка для подтверждения оформления заказа -->
+            <button type="submit">Оформить заказ</button>
+        </form>
+    </div>
+</body>
+</html>

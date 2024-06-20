@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Заголовок страницы -->
+    <title>Корзина</title>
+    <!-- Подключение пользовательских стилей -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Основной контейнер страницы -->
+    <div class="container">
+        <!-- Заголовок страницы -->
+        <h1>Корзина</h1>
+        <!-- Список товаров в корзине -->
+        <ul>
+            <!-- Цикл для отображения каждого товара в корзине -->
+            {% for item in cart_items %}
+                <li>
+                    <!-- Название товара и количество -->
+                    {{ item.product.name }} - {{ item.quantity }}
+                    <!-- Форма для удаления товара из корзины -->
+                    <form action="{{ url_for('remove_from_cart', item_id=item.id) }}" method="post" style="display:inline;">
+                        <button type="submit">Удалить</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+        <!-- Ссылка на страницу оформления заказа -->
+        <a href="{{ url_for('checkout') }}">Оформить заказ</a>
+    </div>
+</body>
+</html>

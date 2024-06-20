@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление товарами</title>
+    <!-- Подключение файла стилей -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Управление товарами</h1>
+        <ul>
+            <!-- Перебор всех товаров и их отображение -->
+            {% for product in products %}
+                <li>
+                    {{ product.name }}
+                    <!-- Ссылка для редактирования товара -->
+                    <a href="{{ url_for('edit_product', product_id=product.id) }}">Редактировать</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <!-- Ссылка для добавления нового товара -->
+        <a href="{{ url_for('add_product') }}">Добавить товар</a>
+    </div>
+</body>
+</html>

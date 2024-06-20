@@ -1,0 +1,22 @@
+<!-- templates/register.html -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Регистрация</h1>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <p>{{ form.username.label }} {{ form.username() }}</p>
+            <p>{{ form.password.label }} {{ form.password() }}</p>
+            <p>{{ form.password2.label }} {{ form.password2() }}</p>
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+</body>
+</html>
